@@ -69,7 +69,9 @@ void sub_menu_encrypt(){
 }
 
 void sub_menu_mail(){
-    string email = "masab15-9811@diu.edu.bd", pass = "semiheaven321", rcv_email, res, line;
+    string email, pass, rcv_email, res, line;
+    cout << "Enter sender email Adrress: "; cin >> email;
+    cout << "Enter sender password: "; cin >> password;
     ifstream fin(enc_file_with_mail);
     ml.set_sender_email(email);
     ml.set_subject("Result");

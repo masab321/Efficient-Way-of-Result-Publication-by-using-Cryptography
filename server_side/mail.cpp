@@ -68,17 +68,3 @@ public:
 };
 
 
-// int main(){
-//     mail m;
-//     string email = "masab15-9811@diu.edu.bd", pass = "semiheaven321", rcv_email = "masabhasnain1@gmail.com";
-//     m.set_subject("result");
-//     m.set_sender_email(email);
-//     m.set_recipient(rcv_email);
-//     m.set_content("AAEBQQwAAAAQAAAAEQAAABYAAADZjFbOopW8TwBCTMpEhvoNcoZGv+TJUI3F37ygQA0DABAAfCIp3xc23EJhrljC8flGJmdGk0/XC/0gODuh8GQ0MplB");
-//     m.set_sender_password(pass);
-
-//     m.start_session();
-//     m.send();
-//     m.stop_session();
-
-// }
