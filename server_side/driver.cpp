@@ -71,7 +71,7 @@ void sub_menu_encrypt(){
 void sub_menu_mail(){
     string email, pass, rcv_email, res, line;
     cout << "Enter sender email Adrress: "; cin >> email;
-    cout << "Enter sender password: "; cin >> password;
+    cout << "Enter sender password: "; cin >> pass;
     ifstream fin(enc_file_with_mail);
     ml.set_sender_email(email);
     ml.set_subject("Result");
