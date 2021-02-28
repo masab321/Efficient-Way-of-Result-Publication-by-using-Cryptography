@@ -1,5 +1,9 @@
 // g++ -o prog driver.cpp generate_student_entries.cpp crypto.cpp mail.cpp -lthemis -lsoter -lPocoFoundation -lPocoNet  -lPocoNetSSL -lPocoUtil && ./prog
+// turn on access for less secure app in sender email account
+
 #include<bits/stdc++.h>
+#include <termios.h>
+#include <unistd.h>
 #include"crypto.cpp"
 #include"generate_student_entries.cpp"
 #include"mail.cpp"
@@ -71,12 +75,21 @@ void sub_menu_encrypt(){
 void sub_menu_mail(){
     string email, pass, rcv_email, res, line;
     cout << "Enter sender email Adrress: "; cin >> email;
+    termios oldt;
+    tcgetattr(STDIN_FILENO, &oldt);
+    termios newt = oldt;
+    newt.c_lflag &= ~ECHO;
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
     cout << "Enter sender password: "; cin >> pass;
+    newt.c_lflag &= ECHO;
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
     ifstream fin(enc_file_with_mail);
     ml.set_sender_email(email);
     ml.set_subject("Result");
     ml.set_sender_password(pass);
+    cout << "Trying to log in...." << endl;
     ml.start_session();
+    // cout << "Login Successful." << endl;
     while(getline(fin, line)){
         stringstream ss(line);
         ss >> rcv_email;
@@ -92,9 +105,6 @@ void sub_menu_mail(){
 
 }
 
-void sub_menu_server(){
-
-}
 
 void main_menu(){
     cout << "******** Main Menu ********" << endl;
@@ -102,7 +112,6 @@ void main_menu(){
     cout << "1. Create New Result Entry" << endl;
     cout << "2. Encrypt Strored Result" << endl;
     cout << "3. Send Result to Students" << endl;
-    cout << "4. Start Server" << endl;
     cout << "0. Exit" << endl;
     cout << "Enter: ";
     cin >> ch;
@@ -110,7 +119,6 @@ void main_menu(){
     if(ch == "1") sub_menu_add();
     else if(ch == "2") sub_menu_encrypt();
     else if(ch == "3") sub_menu_mail();
-    else if(ch == "4") sub_menu_server();
     else return;
     main_menu();
 }
