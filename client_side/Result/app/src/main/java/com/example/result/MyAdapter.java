@@ -30,6 +30,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
         holder.course.setText(modelList.get(position).getCourse());
         holder.grade.setText(modelList.get(position).getGrade());
+        holder.credit.setText(modelList.get(position).getCredit());
+
     }
 
     @Override
@@ -38,12 +40,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        private TextView course,grade;
+        private TextView course,grade, credit;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             course= itemView.findViewById(R.id.singleCourse);
             grade= itemView.findViewById(R.id.singleGrade);
+            credit = itemView.findViewById(R.id.singleCredit);
         }
     }
 }

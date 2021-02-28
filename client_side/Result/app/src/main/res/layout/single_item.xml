@@ -26,15 +26,26 @@
 
             </TextView>
 
-
             <TextView
-                android:text="Grade"
-                android:id="@+id/singleGrade"
-                android:layout_alignParentEnd="true"
+                android:text="Credit"
+                android:id="@+id/singleCredit"
+                android:layout_centerInParent="true"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/singleGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Grade"
+                android:textColor="@color/black"
+                android:textSize="18sp">
 
             </TextView>
 

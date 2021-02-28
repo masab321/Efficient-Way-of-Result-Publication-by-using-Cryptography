@@ -36,6 +36,23 @@ public class d_result extends AppCompatActivity {
         System.out.println(res);
     }
 
+    private String calculateSgpa(String res){
+        String[] data = res.split(",");
+        double credit = 0, total = 0;
+        for(int i = 7; i < data.length - 1; i += 3){
+            double temp = Double.parseDouble(data[i + 1]);
+            credit += temp;
+            temp *= Double.parseDouble(data[i + 2]);
+            total += temp;
+        }
+        System.out.println(total);
+        System.out.println(credit);
+        System.out.println(total / credit);
+        String ret = String.format("%.2f", total / credit);
+        return ret;
+
+    }
+
     private void setData(String res) {
         String[] data = res.split(",");
 
@@ -46,10 +63,10 @@ public class d_result extends AppCompatActivity {
         batch.setText(data[5]);
         semester.setText(data[6]);
 
-        //sgpa.setText(data[7]); uncomment and set the value of i for next line i = 8;
+        sgpa.setText(calculateSgpa(res));
         modelList= new ArrayList<>();
-        for(int i = 7; i < data.length - 1; i += 2){
-            modelList.add(new Model(data[i], data[i + 1]));
+        for(int i = 7; i < data.length - 1; i += 3){
+            modelList.add(new Model(data[i], data[i + 2], data[i + 1]));
         }
 
         linearLayout.setVisibility(View.VISIBLE);
